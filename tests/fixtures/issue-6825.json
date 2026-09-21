@@ -1,0 +1,30 @@
+{
+  "issue": "6825",
+  "pattern": "protocol-mismatch",
+  "provider": "jobber",
+  "scenario": "PKCE code_challenge sent in authorize, code_verifier never sent in token exchange",
+  "input": {
+    "error": {
+      "code": "jobber_token_request_error",
+      "http_status": 400,
+      "provider_response": {
+        "error": "invalid_grant",
+        "error_description": "Code verifier does not match code challenge."
+      }
+    },
+    "oauth_details": {
+      "pkce_enabled": true,
+      "code_challenge_sent": true,
+      "code_verifier_sent": false
+    },
+    "provider_config_key": "jobber",
+    "auth_mode": "OAUTH2",
+    "connection_id": "jobber-001"
+  },
+  "expected": {
+    "pattern": "protocol-mismatch",
+    "sub_type": "pkce-incomplete",
+    "confidence_min": 0.92,
+    "issue_ref": "#6825"
+  }
+}
