@@ -1,0 +1,38 @@
+{
+  "name": "nango-doctor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+ "scripts": {
+  "build": "tsc",
+  "test": "jest",
+  "start": "ts-node src/cli.ts"
+},
+"jest": {
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testMatch": ["**/tests/**/*.test.ts"]
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shyam525/nango-doctor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shyam525/nango-doctor/issues"
+  },
+  "homepage": "https://github.com/Shyam525/nango-doctor#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.2",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.12",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
