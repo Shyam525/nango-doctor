@@ -1,0 +1,20 @@
+{
+  "issue": "6416",
+  "pattern": "error-masking",
+  "provider": "vanta",
+  "scenario": "CC OAuth fails — real error swallowed, caller gets empty payload",
+  "input": {
+    "error": {
+      "code": "unhandled_oauth2_cc_error",
+      "payload": {}
+    },
+    "provider_config_key": "vanta",
+    "auth_mode": "OAUTH2_CC",
+    "connection_id": "vanta-001"
+  },
+  "expected": {
+    "pattern": "error-masking",
+    "confidence_min": 0.90,
+    "issue_ref": "#6416"
+  }
+}
