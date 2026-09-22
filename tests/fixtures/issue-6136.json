@@ -1,0 +1,38 @@
+{
+  "issue": "6136",
+  "pattern": "state-divergence",
+  "provider": "github-app-oauth",
+  "scenario": "userCredentials frozen at original OAuth — not updated on subsequent refreshes",
+  "input": {
+    "error": {
+      "http_status": 500,
+      "code": "server_error",
+      "message": "Failed to refresh credentials"
+    },
+    "connection_state": {
+      "credentials": {
+        "access_token": "ghu_NEW_after_second_refresh",
+        "refresh_token": "ghr_NEW_after_second_refresh",
+        "expires_at": "2026-05-14T06:00:00Z",
+        "updated_at": "2026-05-13T22:00:00Z"
+      },
+      "connection_config": {
+        "userCredentials": {
+          "access_token": "ghu_ORIGINAL_from_oauth",
+          "refresh_token": "ghr_ORIGINAL_already_rotated_and_invalid",
+          "expires_at": "2026-05-13T14:00:00Z",
+          "updated_at": "2026-05-13T06:00:00Z"
+        }
+      }
+    },
+    "provider_config_key": "github-app-oauth",
+    "auth_mode": "CUSTOM",
+    "connection_id": "github-001"
+  },
+  "expected": {
+    "pattern": "state-divergence",
+    "confidence_min": 0.95,
+    "detection_signal": "credentials.updated_at newer than userCredentials.updated_at",
+    "issue_ref": "#6136"
+  }
+}
