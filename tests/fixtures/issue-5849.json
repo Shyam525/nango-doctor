@@ -1,0 +1,30 @@
+{
+  "issue": "5849",
+  "pattern": "notification-loss",
+  "provider": "hubspot",
+  "scenario": "WebSocket timed out before OAuth completed — connection exists in DB but modal is frozen",
+  "input": {
+    "modal_state": {
+      "status": "pending",
+      "error_shown": null
+    },
+    "websocket": {
+      "opened_at": "2026-04-13T10:00:00Z",
+      "closed_at": "2026-04-13T10:02:01Z",
+      "close_reason": "idle_timeout",
+      "timeout_seconds": 121
+    },
+    "database": {
+      "connection_exists": true,
+      "connection_created_at": "2026-04-13T10:02:47Z"
+    },
+    "provider_config_key": "hubspot",
+    "connection_id": "hubspot-001"
+  },
+  "expected": {
+    "pattern": "notification-loss",
+    "confidence_min": 0.91,
+    "detection_signal": "connection_exists=true AND modal_status=pending AND websocket.closed_at < database.connection_created_at",
+    "issue_ref": "#5849"
+  }
+}
