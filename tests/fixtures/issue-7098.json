@@ -1,0 +1,27 @@
+{
+  "issue": "7098",
+  "pattern": "protocol-mismatch",
+  "provider": "twitter-ads",
+  "scenario": "OAuth1 proxy encodes spaces as + (form encoding) but signature expects %20 (RFC3986)",
+  "input": {
+    "error": {
+      "http_status": 401,
+      "message": "Unauthorized"
+    },
+    "request_details": {
+      "params_type": "object",
+      "params": { "q": "ai music" },
+      "encoded_as": "q=ai+music",
+      "should_be": "q=ai%20music"
+    },
+    "provider_config_key": "twitter-ads",
+    "auth_mode": "OAUTH1",
+    "connection_id": "xads-001"
+  },
+  "expected": {
+    "pattern": "protocol-mismatch",
+    "sub_type": "oauth1-encoding",
+    "confidence_min": 0.88,
+    "issue_ref": "#7098"
+  }
+}
