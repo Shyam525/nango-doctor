@@ -1,6 +1,6 @@
-import { detectStateDivergence }   from '../src/patterns/state-divergence';
-import { detectErrorMasking }       from '../src/patterns/error-masking';
-import { detectProtocolMismatch }   from '../src/patterns/protocol-mismatch';
+import { detectStateDivergence }  from '../src/patterns/state-divergence';
+import { detectErrorMasking }      from '../src/patterns/error-masking';
+import { detectProtocolMismatch }  from '../src/patterns/protocol-mismatch';
 
 import fixture6136 from './fixtures/issue-6136.json';
 import fixture6416 from './fixtures/issue-6416.json';

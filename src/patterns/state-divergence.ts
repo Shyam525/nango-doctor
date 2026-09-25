@@ -1,5 +1,9 @@
 // src/patterns/state-divergence.ts
+// REPLACE the top of the file with this one line:
+import { DiagnosisResult, notDetected } from '../types';
 
+// Then DELETE the old interface block and old notDetected function
+// Keep everything else unchanged
 export interface DiagnosisResult {
   detected: boolean;
   pattern: string;
