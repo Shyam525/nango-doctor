@@ -2,6 +2,12 @@ import { detectStateDivergence }  from '../src/patterns/state-divergence';
 import { detectErrorMasking }      from '../src/patterns/error-masking';
 import { detectProtocolMismatch }  from '../src/patterns/protocol-mismatch';
 
+
+
+import { detectNotificationLoss } from '../src/patterns/notification-loss';
+import fixture5849 from './fixtures/issue-5849.json';
+
+
 import fixture6136 from './fixtures/issue-6136.json';
 import fixture6416 from './fixtures/issue-6416.json';
 import fixture6825 from './fixtures/issue-6825.json';
@@ -99,6 +105,35 @@ describe('Protocol mismatch — OAuth1 encoding (#7098)', () => {
   test('fix tells developer to use %20 not +', () => {
     const r = detectProtocolMismatch(fixture7098.input);
     expect(r.fix).toContain('%20');
+  });
+
+});
+
+
+
+
+// ── #5849 Notification Loss ─────────────────────────────────────────────────
+describe('Notification loss (#5849)', () => {
+
+  test('detects WebSocket timeout with successful DB connection', () => {
+    const r = detectNotificationLoss(fixture5849.input);
+    expect(r.detected).toBe(true);
+    expect(r.pattern).toBe('notification-loss');
+    expect(r.confidence).toBeGreaterThanOrEqual(fixture5849.expected.confidence_min);
+    expect(r.issue_ref).toBe('#5849');
+  });
+
+  test('root cause mentions WebSocket', () => {
+    const r = detectNotificationLoss(fixture5849.input);
+    expect(r.root_cause).toContain('WebSocket');
+  });
+
+  test('does NOT fire when connection does not exist in DB', () => {
+    const noConn = {
+      ...fixture5849.input,
+      database: { connection_exists: false },
+    };
+    expect(detectNotificationLoss(noConn).detected).toBe(false);
   });
 
 });
