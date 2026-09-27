@@ -12,12 +12,18 @@
     "start": "ts-node src/cli.ts",
     "analyze": "ts-node src/cli.ts analyze"
   },
-  "keywords": ["nango", "oauth", "debugging", "integration", "diagnosis"],
+  "keywords": [
+    "nango",
+    "oauth",
+    "debugging",
+    "integration",
+    "diagnosis"
+  ],
   "author": "your-github-username",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.0",
-    "@types/node": "^20.0.0",
+    "@types/node": "^20.19.43",
     "jest": "^29.5.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.0",
@@ -26,6 +32,8 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "testMatch": ["**/tests/**/*.test.ts"]
+    "testMatch": [
+      "**/tests/**/*.test.ts"
+    ]
   }
 }
