@@ -1,38 +1,31 @@
 {
   "name": "nango-doctor",
-  "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
+  "version": "0.1.0",
+  "description": "Integration failure diagnosis for Nango users",
+  "main": "dist/cli.js",
+  "bin": {
+    "nango-doctor": "./dist/cli.js"
   },
- "scripts": {
-  "build": "tsc",
-  "test": "jest",
-  "start": "ts-node src/cli.ts"
-},
-"jest": {
-  "preset": "ts-jest",
-  "testEnvironment": "node",
-  "testMatch": ["**/tests/**/*.test.ts"]
-},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Shyam525/nango-doctor.git"
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "start": "ts-node src/cli.ts",
+    "analyze": "ts-node src/cli.ts analyze"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Shyam525/nango-doctor/issues"
-  },
-  "homepage": "https://github.com/Shyam525/nango-doctor#readme",
-  "description": "",
+  "keywords": ["nango", "oauth", "debugging", "integration", "diagnosis"],
+  "author": "your-github-username",
+  "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/node": "^26.6.2",
-    "jest": "^30.5.2",
-    "ts-jest": "^29.4.12",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.ts"]
   }
 }
